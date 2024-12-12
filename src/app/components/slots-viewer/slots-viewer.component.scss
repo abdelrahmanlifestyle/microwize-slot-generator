@@ -1,0 +1,84 @@
+/* Global Variables */
+$primary-bg-color: #3a3b56;
+$text-color: #f8f9fa;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$border-radius: 1rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.4rem;
+$gap-lg: 2rem;
+$padding-lg: 3rem;
+$margin-lg: 6rem;
+$border-color: #3a3b56;
+$empty-state-bg: transparent;
+$empty-state-shadow: 0 0 0 rgba(0, 0, 0, 0);
+$button-hover-bg: #1e1f38;
+$button-hover-border-color: #1e1f38;
+
+:host {
+  color: $text-color;
+}
+
+h1 {
+  margin-top: 2rem;
+}
+
+/* List Styles */
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: $gap-lg;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  padding: $padding-lg;
+  background-color: $primary-bg-color;
+  border-color: $primary-bg-color;
+  border-radius: $border-radius;
+  color: $text-color;
+  box-shadow: 0 4px 6px $shadow-color;
+}
+
+/* Heading Styles */
+h1 {
+  padding: 0 2rem;
+}
+
+/* Label Styles */
+label {
+  font-weight: bold;
+}
+
+/* Select Element Styles */
+select {
+  padding: 0.5rem;
+  font-size: $font-size-base;
+  background-color: $primary-bg-color;
+  border-color: $primary-bg-color;
+  color: $text-color;
+}
+
+/* Input Container Styles */
+.input-container {
+  margin: $margin-lg 2rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: $gap-lg;
+}
+
+/* Empty State Styles */
+.empty-state {
+  background-color: $empty-state-bg;
+  box-shadow: $empty-state-shadow;
+  font-size: $font-size-lg;
+}
+
+/* Icon Styles */
+.bi {
+  padding: 0.5rem;
+}

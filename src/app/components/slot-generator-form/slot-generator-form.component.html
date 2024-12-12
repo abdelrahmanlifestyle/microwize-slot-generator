@@ -1,0 +1,77 @@
+<h1>Microwize Slot Generator</h1>
+<form (ngSubmit)="onSubmit()" [formGroup]="slotForm">
+  <div class="input-container">
+
+    <label for="startDate">
+      <span class="bi bi-calendar"></span>
+      Start Date:
+    </label>
+    <input formControlName="startDate" id="startDate" type="date"/>
+  </div>
+  <div
+    *ngIf="!slotForm.get('startDate')?.errors?.['startDateInvalid'] && slotForm.get('startDate')?.invalid && slotForm.get('startDate')?.touched"
+    class="error">
+    Start Date is required.
+  </div>
+  <div *ngIf="slotForm.get('startDate')?.errors?.['startDateInvalid'] && slotForm.get('startDate')?.touched"
+       class="error">
+    Start Date cannot be before today.
+  </div>
+
+  <div class="input-container">
+    <label for="endDate">
+      <span class="bi bi-calendar"></span>
+      End Date:
+    </label>
+    <input formControlName="endDate" id="endDate" type="date"/>
+  </div>
+  <div *ngIf="slotForm.get('endDate')?.invalid && slotForm.get('endDate')?.touched" class="error">
+    End Date is required.
+  </div>
+  <div *ngIf="slotForm.get('endDate')?.touched && slotForm?.errors?.['dateRangeInvalid'] " class="error">
+    Start Date must be before End Date.
+  </div>
+  <div class="input-container">
+    <label for="timeZone">
+      <span class="bi bi-globe"></span>
+      Time Zone:
+    </label>
+    <select formControlName="timeZone" id="timeZone">
+      @for (tz of slotGeneratorService.timeZones; track $index) {
+        <option [value]="tz">{{ tz }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="input-container">
+    <label for="timeInterval">
+      <span class="bi bi-clock"></span>
+      Time Interval (minutes):
+    </label>
+    <input formControlName="timeInterval" id="timeInterval" type="number"/>
+  </div>
+
+  <div class="input-container">
+    <label for="slotDuration">
+      <span class="bi bi-clock"></span>
+      Slot Duration (minutes):
+    </label>
+    <input formControlName="slotDuration" id="slotDuration" type="number"/>
+  </div>
+
+  <div class="input-container">
+    <label for="minAllowedTime">
+      <span class="bi bi-clock-history"></span>
+      Min Allowed Time (minutes):
+    </label>
+    <input formControlName="minAllowedTime" id="minAllowedTime" type="number"/>
+  </div>
+  <div *ngIf="slotForm.errors?.['minAllowedTimeInvalid']"
+       class="error">
+    Slot Duration must be greater than Minimum Allowed Time.
+  </div>
+  <button [disabled]="slotForm.invalid" type="submit">
+    <span class="bi bi-calendar2-range"></span>
+    Generate Slots
+  </button>
+</form>

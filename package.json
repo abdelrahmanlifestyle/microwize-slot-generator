@@ -1,12 +1,15 @@
 {
   "name": "date-fns-time-slots",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Angular component for generating time slots using date-fns",
+  "author": "Abdelrahman Soliman <abdelrahman.lifestyle@gmail.com>",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "commit": "git-cz"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +21,11 @@
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
+    "@date-fns/tz": "^1.2.0",
+    "@date-fns/utc": "^2.1.0",
+    "date-fns": "^4.1.0",
+    "date-fns-tz": "^3.2.0",
+    "git-cz": "^4.9.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

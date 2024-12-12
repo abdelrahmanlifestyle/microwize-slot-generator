@@ -1,0 +1,28 @@
+<div>
+  <h1>Available Slots:</h1>
+  <div class="input-container">
+    <label for="displayed-timeZone"><span class="bi bi-globe"></span>Display Time Zone:</label>
+    <select
+      [(ngModel)]="selectedTimeZone"
+      [ngModelOptions]="{standalone: true}"
+      id="displayed-timeZone"
+      name="displayed-timeZone">
+      @for (tz of slotGeneratorService.timeZones; track $index) {
+        <option [value]="tz">{{ tz }}</option>
+      }
+    </select>
+  </div>
+  <ul>
+    @for (slot of slotGeneratorService.slots; track $index) {
+      @if (invalidRange(slot)) {
+        <li>
+          {{ slot.start | formatTimezone: selectedTimeZone }}
+          ---
+          {{ slot.end | formatTimezone: selectedTimeZone }}
+        </li>
+      }
+    } @empty {
+      <li class="empty-state">No slots available</li>
+    }
+  </ul>
+</div>
